@@ -30,7 +30,7 @@ if nargin <2
 end
 
 load(dotimport,'root');
-
+ksize=3;
 XO=tractbox_import_dot(root.dot,options.featuremap.thr);
 BCi=tractbox_fast_corr(XO,XO); clear XO;
 
@@ -60,6 +60,7 @@ if options.featuremap.matrix.mean
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-mean.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
     type = 'Euclidean Distance Matrix: Voxel-wise mean';
@@ -75,6 +76,7 @@ if options.featuremap.matrix.median
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-median.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
     type = 'Euclidean Distance Matrix: Voxel-wise median';
@@ -90,6 +92,7 @@ if options.featuremap.matrix.var
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-variance.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
     type = 'Euclidean Distance Matrix: Voxel-wise variance';
@@ -105,6 +108,7 @@ if options.featuremap.matrix.kurtosis
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-kurtosis.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
@@ -121,6 +125,7 @@ if options.featuremap.matrix.skew
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-skewness.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
     type = 'Euclidean Distance Matrix: Voxel-wise skewness';
@@ -136,7 +141,9 @@ if options.featuremap.matrix.sum
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-global-total.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
+
     create(N);
     type = 'Euclidean Distance Matrix: Voxel-wise total (summation of vector)';
     sourcesize = size(val,1);
@@ -157,6 +164,7 @@ if options.featuremap.gradient.mean
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-mean.nii']);
     N.dat.fname=filename;
     N.dat(:,:,:) = Z;
+    N.dat.dtype='FLOAT32';
     create(N);
 
     type = 'Regional Sobel Gradient of Euclidean Distance: Mean of 3D connected neighbourhood';
@@ -175,6 +183,7 @@ if options.featuremap.gradient.median
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-median.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
@@ -194,6 +203,7 @@ if options.featuremap.gradient.var
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-variance.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
@@ -213,6 +223,7 @@ if options.featuremap.gradient.kurtosis
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-kurtosis.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
@@ -232,6 +243,7 @@ if options.featuremap.gradient.skew
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-skewness.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
@@ -251,6 +263,7 @@ if options.featuremap.gradient.sum
     Z(root.seedcoord)=val;
     filename = fullfile(root.output,['sub-',root.subject,'_seed-',root.seed,'_threshold-',num2str(options.featuremap.thr),'_featuremap-gradient-total.nii']);
     N.dat.fname=filename;
+    N.dat.dtype='FLOAT32';
     N.dat(:,:,:) = Z;
     create(N);
 
